@@ -1,0 +1,695 @@
+/* =========================================
+   Design System & Variables
+   ========================================= */
+:root {
+    /* Colors */
+    --clr-white: #ffffff;
+    --clr-light-bg: #f9f7f6;
+    --clr-text-main: #333333;
+    --clr-text-light: #666666;
+
+    /* Soft Accents */
+    --clr-blush: #f4e1e1;
+    --clr-gold: #d4af37;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* =========================================
+   Reset & Base Styles
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text-main);
+    background-color: var(--clr-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    color: var(--clr-text-main);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.bg-light {
+    background-color: var(--clr-light-bg);
+}
+
+/* =========================================
+   Typography Utilities
+   ========================================= */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: var(--clr-gold);
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Petal canvas */
+#petal-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/floral_background.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    from {
+        transform: scale(1.05);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.45) 0%,
+            rgba(255, 255, 255, 0.70) 50%,
+            rgba(255, 255, 255, 0.45) 100%);
+    z-index: 1;
+}
+
+/* ---- Main body ---- */
+.hero-body {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0 24px;
+}
+
+/* Eyebrow */
+.hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--clr-gold);
+    margin-bottom: 28px;
+}
+
+/* Names */
+.hero-names-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    line-height: 1;
+    margin-bottom: 28px;
+}
+
+.hero-name-first,
+.hero-name-second {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--clr-text-main);
+    line-height: 1.05;
+    white-space: nowrap;
+}
+
+.hero-ampersand {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-style: italic;
+    color: var(--clr-gold);
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+/* Divider row with date */
+.hero-divider-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    width: 100%;
+    max-width: 520px;
+}
+
+.hero-divider-rule {
+    flex: 1;
+    height: 1px;
+    background-color: var(--clr-gold);
+    opacity: 0.5;
+}
+
+.hero-divider-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--clr-gold);
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.hero-divider-date {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clr-text-light);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Tagline */
+.hero-tagline {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--clr-text-light);
+    letter-spacing: 0.5px;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--clr-gold);
+    opacity: 0.7;
+    animation: bounce 2.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(8px);
+    }
+}
+
+
+/* =========================================
+   Details Section — Two-Panel Design
+   ========================================= */
+.details-section {
+    position: relative;
+    padding: 110px 20px;
+    overflow: hidden;
+}
+
+.details-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/details_bg.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    opacity: 0.55;
+}
+
+.details-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* The two panels + divider */
+.details-panels {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-top: 64px;
+    flex-wrap: wrap;
+}
+
+/* Individual panel */
+.details-panel {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.details-panel:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+    transform: translateY(-6px);
+}
+
+/* Icon */
+.panel-icon {
+    font-size: 1.6rem;
+    color: var(--clr-gold);
+    margin-bottom: 18px;
+    opacity: 0.85;
+}
+
+/* Label */
+.panel-label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--clr-gold);
+    margin-bottom: 24px;
+}
+
+/* Date block */
+.panel-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+    line-height: 1;
+}
+
+.pd-month {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--clr-text-light);
+    margin-bottom: 6px;
+}
+
+.pd-day {
+    font-family: var(--font-heading);
+    font-size: 5.5rem;
+    font-weight: 400;
+    color: var(--clr-text-main);
+    line-height: 1;
+}
+
+.pd-year {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: var(--clr-text-light);
+    margin-top: 6px;
+}
+
+/* Venue text */
+.panel-venue-name {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--clr-text-main);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.panel-address {
+    font-size: 0.92rem;
+    color: var(--clr-text-light);
+    line-height: 1.9;
+    margin-bottom: 32px;
+}
+
+/* Button */
+.panel-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 28px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--clr-gold);
+    border: 1px solid var(--clr-gold);
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+    margin-top: auto;
+}
+
+.panel-btn:hover {
+    background: var(--clr-gold);
+    color: #fff;
+}
+
+/* Diamond divider */
+.details-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0 24px;
+    align-self: stretch;
+    justify-content: center;
+}
+
+.dd-line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.5), transparent);
+    min-height: 60px;
+}
+
+.dd-diamond {
+    width: 9px;
+    height: 9px;
+    background-color: var(--clr-gold);
+    transform: rotate(45deg);
+    opacity: 0.7;
+    flex-shrink: 0;
+    margin: 8px 0;
+}
+
+/* =========================================
+   Story Section
+   ========================================= */
+.story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.story-content p {
+    font-size: 1.1rem;
+    color: var(--clr-text-light);
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+.story-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================================
+   GALLERY SECTION — Taped Photo Board
+   ========================================= */
+.gallery-section {
+    background-color: #ffffff;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.gallery-section {
+    position: relative;
+}
+
+.gallery-subtitle {
+    text-align: center;
+    color: var(--clr-text-light);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 3.5rem;
+    font-style: italic;
+}
+
+.gallery-section .section-title {
+    color: var(--clr-text-main);
+}
+
+.gallery-section .section-title::after {
+    background-color: var(--clr-gold);
+}
+
+/* 3-column grid */
+.gallery-stack {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 40px;
+    padding: 20px 80px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Photo frame ---- */
+.gallery-item {
+    background: #fff;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    box-shadow:
+        3px 5px 18px rgba(0, 0, 0, 0.55),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+    transform: rotate(var(--rot, 0deg));
+    opacity: 0;
+    scale: 0.8;
+    transition:
+        opacity 0.5s ease,
+        scale 0.55s cubic-bezier(0.34, 1.4, 0.64, 1),
+        transform 0.35s ease,
+        box-shadow 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.gallery-item.revealed {
+    opacity: 1;
+    scale: 1;
+}
+
+.gallery-item:hover {
+    transform: rotate(0deg) translateY(-6px) scale(1.04);
+    box-shadow:
+        6px 18px 40px rgba(0, 0, 0, 0.65),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 50;
+}
+
+/* ---- Tape strip — top ---- */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%) rotate(var(--tr, 0deg));
+    width: 54px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+/* ---- Tape strip — bottom ---- */
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    transform: translateX(-50%) rotate(calc(var(--tr, 0deg) * -1));
+    width: 54px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .gallery-stack {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 30px;
+        padding: 20px 40px 40px;
+    }
+}
+
+@media (max-width: 440px) {
+    .gallery-stack {
+        grid-template-columns: 1fr;
+        gap: 44px;
+        padding: 20px 32px 40px;
+    }
+}
+
+
+/* =========================================
+   Footer
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    background-color: var(--clr-white);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: var(--clr-text-light);
+    letter-spacing: 1px;
+    line-height: 2;
+}
+
+/* =========================================
+   Animations & Visibility Classes
+   ========================================= */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Active state added via JS */
+.is-visible {
+    opacity: 1 !important;
+    transform: translate(0) !important;
+}
+
+/* =========================================
+   Responsive Media Queries
+   ========================================= */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .details-panels {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .details-divider {
+        flex-direction: row;
+        align-self: auto;
+        width: 200px;
+        padding: 16px 0;
+    }
+
+    .dd-line {
+        flex: 1;
+        height: 1px;
+        width: auto;
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
+        min-height: unset;
+    }
+
+    .details-panel {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .pd-day {
+        font-size: 4rem;
+    }
+
+    .panel-venue-name {
+        font-size: 1.6rem;
+    }
+}

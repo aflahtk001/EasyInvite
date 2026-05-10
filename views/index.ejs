@@ -1,0 +1,139 @@
+
+<%- include('partials/index-header') %>
+
+
+  <div class="petals-container" aria-hidden="true">
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+  </div>
+
+  <section id="hero" class="hero">
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">&#10022; Your Love, Your Story &#10022;</p>
+      <h1 class="hero__title">Create Your<br /><em>Special Invite</em></h1>
+      <p class="hero__subtitle">
+        Design a personalised wedding invitation in moments.<br />
+        Share your unique love story beautifully with everyone you cherish.
+      </p>
+      <a href="#form-section" class="btn btn--primary">
+        <span>Create Your Invite</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="hero__ring hero__ring--1" aria-hidden="true"></div>
+    <div class="hero__ring hero__ring--2" aria-hidden="true"></div>
+    <div class="hero__floral hero__floral--tl" aria-hidden="true">&#10048;</div>
+    <div class="hero__floral hero__floral--br" aria-hidden="true">&#10048;</div>
+  </section>
+
+  <section id="form-section" class="form-section">
+    <div class="section-header">
+      <h2 class="section-title">Tell Us Your Story</h2>
+      <p class="section-subtitle">Fill in the details below to create your beautiful wedding invitation.</p>
+    </div>
+    <div class="form-card">
+      <form action="/submit" method="post" id="invite-form">
+
+        <div class="form-group">
+          <label class="form-label" for="partner1-name"><span class="label-icon" aria-hidden="true">
+              Groom Name</label>
+          <input type="text" id="partner1-name" name="groom" class="form-input" placeholder="e.g. Aria" maxlength="60"
+            minlength="2" autocomplete="off" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="partner2-name"><span class="label-icon" aria-hidden="true">
+              Bride Name</label>
+          <input type="text" id="partner2-name" name="bride" class="form-input" placeholder="e.g. Noah" maxlength="60"
+            minlength="2" autocomplete="off" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wedding-date"><span class="label-icon" aria-hidden="true">
+              Wedding Date</label>
+          <input type="date" id="wedding-date" name="date" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="venue-name"><span class="label-icon"
+              aria-hidden="true">&#127963;&#65039;</span> Venue Name</label>
+          <input type="text" id="venue-name" name="venue" class="form-input" placeholder="e.g. The Grand Ballroom"
+            maxlength="120" autocomplete="off" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wedding-location"><span class="label-icon" aria-hidden="true">
+              City / Address</label>
+          <input type="text" id="wedding-location" name="location" class="form-input" placeholder="e.g. Paris, France"
+            maxlength="120" autocomplete="off" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="maps-link"><span class="label-icon" aria-hidden="true">
+              Google Maps Link <span class="label-hint">(optional)</span></label>
+          <input type="url" id="maps-link" name="mapsLink" class="form-input"
+            placeholder="https://maps.google.com/&hellip;" autocomplete="off" />
+        </div>
+
+        <div class="form-group form-group--full">
+          <label class="form-label" for="wedding-story"><span class="label-icon" aria-hidden="true">
+              Your Love Story <span class="label-hint">(optional)</span></label>
+          <textarea id="wedding-story" name="story" class="form-input form-textarea"
+            placeholder="Share a short message or the story of how you two met&hellip;" maxlength="400"
+            rows="4"></textarea>
+          <span class="char-hint">Max 400 characters</span>
+        </div>
+
+        <div class="form-group form-group--full">
+
+          <label class="form-label">
+            <span class="label-icon" aria-hidden="true">
+              Upload Photos
+          </label>
+
+          <input type="hidden" name="imageUrls" id="imageUrls">
+
+          <button type="button" class="upload-btn" id="upload_widget">
+            Choose Photos
+          </button>
+
+          <p id="upload-status"></p>
+
+          <div id="image-preview-container"></div>
+
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary btn--submit">
+            Generate My Invite
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 12 20 22 4 22 4 12" />
+              <polyline points="22 7 12 2 2 7" />
+              <line x1="12" y1="22" x2="12" y2="2" />
+            </svg>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <script>
+
+    window.cloudinaryConfig = {
+
+      cloudName: "<%= cloudName %>",
+
+      uploadPreset: "<%= uploadPreset %>"
+
+    };
+
+  </script>
+  <%- include('partials/index-footer') %>
+

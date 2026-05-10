@@ -1,0 +1,121 @@
+
+<%- include('partials/invite-header') %>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <canvas id="petal-canvas"></canvas>
+
+        <div class="hero-body fade-in-up">
+            <p class="hero-eyebrow">Together Forever</p>
+
+            <div class="hero-names-wrap">
+                <span class="hero-name-first">
+                    <%= data.groom %>
+                </span>
+                <span class="hero-ampersand">&amp;</span>
+                <span class="hero-name-second">
+                    <%= data.bride %>
+                </span>
+            </div>
+
+            <div class="hero-divider-line">
+                <span class="hero-divider-dot"></span>
+                <span class="hero-divider-rule"></span>
+                <span class="hero-divider-date">
+                    <%= date.month %>
+                        <%= date.day %>, <%= date.year %>
+                </span>
+                <span class="hero-divider-rule"></span>
+                <span class="hero-divider-dot"></span>
+            </div>
+
+            <p class="hero-tagline">&ldquo;Two souls, one heart.&rdquo;</p>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="details" class="details-section">
+        <div class="details-bg"></div>
+
+        <div class="details-inner">
+            <h2 class="section-title slide-in">When & Where</h2>
+
+            <div class="details-panels">
+
+                <div class="details-panel slide-in-left">
+                    <div class="panel-icon"><i class="fa-regular fa-calendar-heart"></i></div>
+                    <p class="panel-label">The Date</p>
+                    <div class="panel-date">
+                        <span class="pd-month">
+                            <%= date.month %>
+                        </span>
+                        <span class="pd-day">
+                            <%= date.day %>
+                        </span>
+                        <span class="pd-year">
+                            <%= date.year %>
+                        </span>
+                    </div>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE" id="add-to-calendar-btn"
+                        class="panel-btn" target="_blank">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span>Add to Calendar</span>
+                    </a>
+                </div>
+
+                <div class="details-divider">
+                    <span class="dd-line"></span>
+                    <span class="dd-diamond"></span>
+                    <span class="dd-line"></span>
+                </div>
+
+                <div class="details-panel slide-in-right">
+                    <div class="panel-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <p class="panel-label">The Venue</p>
+                    <p class="panel-venue-name">
+                        <%= data.venue %>
+                    </p>
+                    <p class="panel-address">
+                        <%= data.location %>
+                    </p>
+                    <a href="<%= data.mapsLink %>" target="_blank" id="view-on-map-btn" class="panel-btn">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <span>View on Map</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="story-section section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title slide-in">Our Love Story</h2>
+            <div class="story-content slide-in">
+                <p>
+                    <%= data.story %>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title slide-in">Our Moments</h2>
+            <p class="gallery-subtitle slide-in">A glimpse into our love story</p>
+        </div>
+        <div class="gallery-stack" id="gallery-grid">
+            <% for(let i=0; i<data.images.length; i++) { %>
+                <div class="gallery-item">
+                    <img src="<%= data.images[i] %>" alt="" loading="lazy">
+                </div>
+                <% } %>
+        </div>
+
+    </section>
+
+    <%- include('partials/invite-footer') %>

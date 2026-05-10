@@ -1,0 +1,28 @@
+
+<%- include('partials/index-header') %>
+
+  <section id="result-section" class="result-section" aria-live="polite">
+    <div class="result-inner">
+      <div class="result-badge"><span class="result-badge__icon">&#10003;</span></div>
+      <p class="result-eyebrow">Your invite is ready!</p>
+      <h2 class="result-title">Share the Magic &#10024;</h2>
+      <div class="link-card">
+        <p class="link-card__label">Your unique invitation link</p>
+        <span class="link-card__url" id="invite-url"
+          aria-label="Generated invitation link">https://easyinvite-cg3z.onrender.com/invite/<%=key%></span>
+        <div class="link-card__actions">
+          <button class="btn-copy" id="copy-btn" aria-label="Copy invitation link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+            <span>Copy Link</span>
+          </button>
+          <span class="copy-feedback" id="copy-feedback" role="status" aria-live="polite">Copied!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/sharelink-footer') %>
